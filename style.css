@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'Minecraft';
+    src: url('minecraft.ttf') format('truetype');
+}
+
+body {
+    background-image: url("bg.png") !important;
+    background-color: #1b1b1b !important;
+    color: #dcdcdc !important;
+}
+
+.navbar {
+    background-image: url("nav_bg.png") !important;
+    height: 48px !important;
+}
+
+.navbar-inverse .navbar-nav > .active > a {
+    background-color: transparent !important;
+    font-weight: bold;
+}
+
+.navbar-nav > .dropdown:hover > a, 
+.navbar-nav > .dropdown.open > a {
+    background-color: transparent !important;
+}
+
+.navbar-toggle {
+    border-color: #ddd;
+}
+
+.navbar-toggle:hover,
+.navbar-toggle:focus {
+    background-color: #333;
+}
+
+.navbar-toggle .icon-bar {
+    background-color: #ddd;
+}
+
+@media (max-width: 767px) {
+    .navbar-collapse {
+        background-color: rgba(34, 34, 34, 0.95) !important;
+        border-top: 1px solid #333;
+        margin-top: 10px;
+        padding: 0;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+        z-index: 9999 !important;
+        position: relative;
+    }
+    
+    .navbar-nav {
+        margin: 0;
+    }
+    
+    .navbar-nav > li > a {
+        padding: 15px;
+        border-bottom: 1px solid #333;
+        background-color: rgba(34, 34, 34, 0.9) !important;
+    }
+    
+    .navbar-nav > li > a:hover,
+    .navbar-nav > li > a:focus {
+        background-color: rgba(62, 52, 52, 0.9) !important;
+    }
+    
+    .navbar-nav > li:last-child > a {
+        border-bottom: none;
+    }
+}
+
+.dropdown-menu {
+    background-color: #1b1b1b !important;
+    color: #dcdcdc !important;
+    border: none !important;
+}
+
+.dropdown-menu > li > a {
+    color: #dcdcdc !important;
+}
+
+.dropdown-menu > li > a:hover {
+    background-color: rgb(62, 52, 52);
+    color: #dcdcdc !important;
+}
+
+#youtube-grid .col-xs-6 {
+    margin-bottom: 15px;
+}
+
+#youtube-grid > div {
+    margin-bottom: 15px;
+}
+
+ul.news li p {
+    font-size: 12px;
+    color: grey;
+    font-weight: 100;
+}
+
+ul.news li code {
+    font-size: 12px;
+    color: white;
+    font-weight: 100;
+    background-color: #444;
+}

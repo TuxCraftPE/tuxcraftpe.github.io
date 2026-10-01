@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TuxCraft</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="tux_icon.png" type="image/x-icon">
+</head>
+<body>
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html"><img src="logo.png" width="130px"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="index.html">Home</a></li>
+                    <li><a href="releases.html">Releases</a></li>
+                    <li><a href="https://discord.gg/4fv4RrTav4">Discord</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h1><b>TuxCraft</b></h1>
+                <p>Minecraft PE 0.6.1 with Tux</p>
+                <a href="releases.html" class="btn btn-success btn-lg">Download client</a><br><br><br>
+                <h3><b>Gallery</b></h3>
+                <div id="gallery" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#gallery" data-slide-to="0" class="active"></li>
+                        <li data-target="#gallery" data-slide-to="1"></li>
+                        <li data-target="#gallery" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <img src="screenshots/0.png" height="200px">
+                        </div>
+                        <div class="item">
+                            <img src="screenshots/1.png" height="200px">
+                        </div>
+                        <div class="item">
+                            <img src="screenshots/2.png" height="200px">
+                        </div>
+                    </div>
+                    <a class="left carousel-control" href="#gallery" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    </a>
+                    <a class="right carousel-control" href="#gallery" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </a>
+                </div>
+                
+            </div>
+
+            <div class="col-md-4">
+                <h3><b>Join us on Discord</b></h3>
+                <a href="https://discord.gg/4fv4RrTav4" class="btn btn-primary btn-lg" style="width: 300px;">Discord</a>
+                <h4></h4>
+                <ul>
+
+                </ul>
+                <h4></h4>
+                <ul>
+
+                </ul>
+
+                <h4></h4>
+            </div>
+        </div>
+    </div>
+
+    <br><br><br>
+    <iframe src="footer.html" style="width: 100%; height: 40px; border: none; overflow: hidden;"></iframe>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script>
+        window.addEventListener('message', function(event) {
+            if (event.data && event.data.type === 'resize') {
+                var newsFrame = document.getElementById('news-frame');
+                if (newsFrame) {
+                    newsFrame.style.height = event.data.height + 'px';
+                }
+            }
+        }, false);
+    </script>
+    <script>
+    function updateServerStatus() {
+        fetch('https://api.mcstatus.io/v2/status/bedrock/alphastone.ddns.net:19131')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('server-status');
+                if (!data || data.error) {
+                    container.innerHTML = '<p style="color: red;"><b>Offline</b></p>';
+                    return;
+                }
+
+                const onlineStatus = data.online ? '<span style="color: green;">Online</span>' : '<span style="color: red;">Offline</span>';
+                const players = data.players ? `${data.players.online} / ${data.players.max}` : 'N/A';
+
+                container.innerHTML = `
+                    <p><strong>Status:</strong> ${onlineStatus}</p>
+                    <p><strong>Players:</strong> ${players}</p>
+                `;
+            })
+            .catch(err => {
+                document.getElementById('server-status').innerHTML = '<p style="color: red;"><b>Error loading status</b></p>';
+                console.error('Status load error:', err);
+            });
+    }
+
+    setInterval(updateServerStatus, 10000);
+    updateServerStatus();
+</script>
+</body>
+</html>
